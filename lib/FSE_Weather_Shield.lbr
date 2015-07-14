@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -253,18 +253,15 @@
 <dimension x1="60.125" y1="3.5" x2="62.875" y2="3.5" x3="61.5" y3="-3" textsize="1.27" layer="47" dtype="diameter"/>
 <dimension x1="61.5" y1="52.5" x2="61.5" y2="49.4" x3="61.5" y3="41.6" textsize="1.27" layer="47" dtype="radius"/>
 <dimension x1="82" y1="53" x2="84.121321875" y2="55.121321875" x3="89.63675625" y3="60.63675625" textsize="1.27" layer="47" dtype="radius"/>
-<wire x1="5.08" y1="0" x2="45.72" y2="0" width="0" layer="21"/>
-<wire x1="45.72" y1="0" x2="48.26" y2="3.81" width="0" layer="21" curve="90"/>
-<wire x1="48.26" y1="3.81" x2="48.26" y2="13.97" width="0" layer="21"/>
-<wire x1="48.26" y1="13.97" x2="50.8" y2="16.51" width="0" layer="21" curve="-90"/>
-<wire x1="50.8" y1="16.51" x2="64.77" y2="16.51" width="0" layer="21"/>
-<wire x1="64.77" y1="16.51" x2="67.31" y2="19.05" width="0" layer="21" curve="90"/>
-<wire x1="67.31" y1="19.05" x2="67.31" y2="54.61" width="0" layer="21"/>
-<wire x1="67.31" y1="54.61" x2="64.77" y2="58.42" width="0" layer="21" curve="90"/>
-<wire x1="64.77" y1="58.42" x2="3.81" y2="58.42" width="0" layer="21"/>
+<wire x1="5.08" y1="0" x2="63.5" y2="0" width="0" layer="21"/>
+<wire x1="62.23" y1="58.42" x2="3.81" y2="58.42" width="0" layer="21"/>
 <wire x1="3.81" y1="58.42" x2="0" y2="53.34" width="0" layer="21" curve="90"/>
 <wire x1="0" y1="53.34" x2="0" y2="3.81" width="0" layer="21"/>
 <wire x1="0" y1="3.81" x2="5.08" y2="0" width="0" layer="21" curve="90"/>
+<pad name="PE_TR1" x="62.77" y="4.77" drill="2.75" diameter="6.2"/>
+<wire x1="67.31" y1="54.61" x2="62.23" y2="58.42" width="0" layer="21" curve="90"/>
+<wire x1="63.5" y1="0" x2="67.31" y2="5.08" width="0" layer="21" curve="90"/>
+<wire x1="67.31" y1="5.08" x2="67.31" y2="54.61" width="0" layer="21"/>
 </package>
 <package name="SOIC127P1032X265-16N">
 <smd name="1" x="-4.699" y="4.445" dx="1.9812" dy="0.5334" layer="1"/>
@@ -459,7 +456,7 @@ J8</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="RASPBERRY_PI_B+" prefix="PCB">
+<deviceset name="RASPBERRY_PI_B+/PI2" prefix="PCB">
 <description>&lt;b&gt;Raspberry Pi B+&lt;/b&gt;&lt;br&gt;
 Basedon issue: Thursday, July 10, 2014 - Rev 1.2&lt;p&gt;
 LBR by Tim Rettmann 07-2014</description>
