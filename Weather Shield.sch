@@ -9208,7 +9208,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <instance part="C1" gate="G$1" x="7.62" y="78.74"/>
 <instance part="GND5" gate="1" x="7.62" y="68.58" rot="MR0"/>
 <instance part="G1" gate="G$1" x="17.78" y="76.2"/>
-<instance part="PCB1" gate="G$1" x="195.58" y="139.7"/>
+<instance part="PCB1" gate="G$1" x="198.12" y="132.08"/>
 <instance part="JP9-DNP1" gate="G$1" x="139.7" y="88.9" smashed="yes" rot="MR180">
 <attribute name="NAME" x="134.366" y="76.073" size="1.778" layer="95"/>
 <attribute name="VALUE" x="134.62" y="99.06" size="1.778" layer="96" rot="MR180"/>

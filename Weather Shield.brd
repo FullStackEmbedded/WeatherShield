@@ -2085,7 +2085,7 @@ design rules under a new name.</description>
 </element>
 <element name="PCB1" library="FSE_Weather_Shield" package="RASPBERRY_PI_BPLUS_DIM" value="RASPBERRY_PI_B+/PI2_DIM" x="0" y="0"/>
 <element name="JP9-DNP1" library="SparkFun" package="RJ11-6" value="" x="45.72" y="5.08"/>
-<element name="JP9-DNP2" library="SparkFun" package="RJ11-6" value="" x="97.79" y="26.67" rot="R90"/>
+<element name="JP9-DNP2" library="SparkFun" package="RJ11-6" value="" x="99.06" y="27.94" rot="R90"/>
 <element name="R7" library="rcl" package="R0603" value="1K" x="-6.35" y="-27.94"/>
 <element name="D2" library="SparkFun" package="LED-0603" value="Blue" x="-6.35" y="-31.75"/>
 </elements>
