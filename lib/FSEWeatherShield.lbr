@@ -467,6 +467,21 @@
 <wire x1="-5.08" y1="-3.81" x2="-5.08" y2="0" width="0.127" layer="21"/>
 <wire x1="0" y1="0" x2="0" y2="-3.81" width="0.127" layer="21"/>
 </package>
+<package name="EIA7343-20">
+<wire x1="-2.17" y1="-1.6" x2="-4.37" y2="-1.6" width="0.2032" layer="21"/>
+<wire x1="-4.37" y1="-1.6" x2="-4.37" y2="1.55" width="0.2032" layer="21"/>
+<wire x1="-4.37" y1="1.55" x2="-2.17" y2="1.55" width="0.2032" layer="21"/>
+<wire x1="2.27" y1="-1.55" x2="3.97" y2="-1.55" width="0.2032" layer="21"/>
+<wire x1="3.97" y1="-1.55" x2="4.37" y2="-1.2" width="0.2032" layer="21"/>
+<wire x1="4.37" y1="-1.2" x2="4.37" y2="1.25" width="0.2032" layer="21"/>
+<wire x1="4.37" y1="1.25" x2="3.97" y2="1.55" width="0.2032" layer="21"/>
+<wire x1="3.97" y1="1.55" x2="2.27" y2="1.55" width="0.2032" layer="21"/>
+<wire x1="1.879" y1="1.311" x2="1.879" y2="-1.286" width="0.4" layer="21" style="longdash"/>
+<smd name="C" x="-3" y="0" dx="1.6" dy="2.6" layer="1"/>
+<smd name="A" x="3" y="0" dx="1.6" dy="2.6" layer="1"/>
+<text x="-4.81" y="-1.27" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="5.78" y="-1.37" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="RASPBERRY_PI_B+">
@@ -565,6 +580,18 @@ J8</text>
 <pin name="+" x="15.24" y="5.08" length="middle" rot="R180"/>
 <pin name="-" x="7.62" y="-5.08" length="middle" rot="R90"/>
 <text x="0" y="10.16" size="1.27" layer="94">DEAN Connector</text>
+</symbol>
+<symbol name="C_POL">
+<wire x1="-2.54" y1="0" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.016" x2="0" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="0" y1="-1" x2="2.4892" y2="-1.8542" width="0.254" layer="94" curve="-37.878202" cap="flat"/>
+<wire x1="-2.4669" y1="-1.8504" x2="0" y2="-1.0161" width="0.254" layer="94" curve="-37.376341" cap="flat"/>
+<text x="1.016" y="0.635" size="1.778" layer="95">&gt;NAME</text>
+<text x="1.016" y="-4.191" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-2.253" y1="0.668" x2="-1.364" y2="0.795" layer="94"/>
+<rectangle x1="-1.872" y1="0.287" x2="-1.745" y2="1.176" layer="94"/>
+<pin name="+" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="-" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -674,6 +701,22 @@ LBR by Tim Rettmann 07-2014</description>
 <connects>
 <connect gate="G$1" pin="+" pad="1"/>
 <connect gate="G$1" pin="-" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="47UF-16V-10%(TANT)">
+<gates>
+<gate name="G$1" symbol="C_POL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="EIA7343-20">
+<connects>
+<connect gate="G$1" pin="+" pad="A"/>
+<connect gate="G$1" pin="-" pad="C"/>
 </connects>
 <technologies>
 <technology name=""/>
