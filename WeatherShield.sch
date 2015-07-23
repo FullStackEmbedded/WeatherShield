@@ -22844,13 +22844,13 @@ needed</text>
 <instance part="GND5" gate="1" x="20.32" y="142.24" rot="MR0"/>
 <instance part="G1" gate="G$1" x="30.48" y="149.86"/>
 <instance part="PCB1" gate="G$1" x="238.76" y="215.9"/>
-<instance part="JP9-DNP1" gate="G$1" x="160.02" y="241.3" smashed="yes" rot="MR180">
-<attribute name="NAME" x="154.686" y="228.473" size="1.778" layer="95"/>
-<attribute name="VALUE" x="154.94" y="251.46" size="1.778" layer="96" rot="MR180"/>
+<instance part="JP9-DNP1" gate="G$1" x="157.48" y="220.98" smashed="yes" rot="MR180">
+<attribute name="NAME" x="152.146" y="208.153" size="1.778" layer="95"/>
+<attribute name="VALUE" x="152.4" y="231.14" size="1.778" layer="96" rot="MR180"/>
 </instance>
-<instance part="JP9-DNP2" gate="G$1" x="177.8" y="238.76" smashed="yes" rot="MR0">
-<attribute name="NAME" x="183.134" y="251.587" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="182.88" y="228.6" size="1.778" layer="96" rot="MR0"/>
+<instance part="JP9-DNP2" gate="G$1" x="193.04" y="218.44" smashed="yes" rot="MR0">
+<attribute name="NAME" x="198.374" y="231.267" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="198.12" y="208.28" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="R7" gate="G$1" x="342.9" y="236.22" rot="R270"/>
 <instance part="D2" gate="G$1" x="342.9" y="226.06" smashed="yes">
@@ -23793,6 +23793,48 @@ needed</text>
 <junction x="200.66" y="40.64"/>
 <junction x="208.28" y="40.64"/>
 <pinref part="SUPPLY12" gate="+5V" pin="+5V"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="6"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="1"/>
+<wire x1="187.96" y1="213.36" x2="162.56" y2="213.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="5"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="2"/>
+<wire x1="187.96" y1="215.9" x2="162.56" y2="215.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="4"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="3"/>
+<wire x1="187.96" y1="218.44" x2="162.56" y2="218.44" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$25" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="3"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="4"/>
+<wire x1="187.96" y1="220.98" x2="162.56" y2="220.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="2"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="5"/>
+<wire x1="187.96" y1="223.52" x2="162.56" y2="223.52" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$27" class="0">
+<segment>
+<pinref part="JP9-DNP1" gate="G$1" pin="1"/>
+<pinref part="JP9-DNP2" gate="G$1" pin="6"/>
+<wire x1="187.96" y1="226.06" x2="162.56" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

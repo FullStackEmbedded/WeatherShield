@@ -2470,7 +2470,7 @@ design rules under a new name.</description>
 </element>
 <element name="PCB1" library="FSE_Weather_Shield" package="RASPBERRY_PI_BPLUS_DIM" value="RASPBERRY_PI_B+/PI2_DIM" x="58.42" y="0" rot="R90"/>
 <element name="JP9-DNP1" library="SparkFun" package="RJ11-6" value="" x="44.45" y="62.23" rot="R180"/>
-<element name="JP9-DNP2" library="SparkFun" package="RJ11-6" value="" x="92.71" y="36.83" rot="R90"/>
+<element name="JP9-DNP2" library="SparkFun" package="RJ11-6" value="" x="92.71" y="35.56" rot="R90"/>
 <element name="R7" library="rcl" package="R0603" value="1K" x="53.34" y="58.42" rot="R180"/>
 <element name="D2" library="SparkFun" package="LED-0603" value="Blue" x="49.53" y="58.42" rot="R90"/>
 <element name="U2" library="SparkFun-PowerIC" package="MSOP-12_GND" value="LT3652" x="44.45" y="30.48" rot="R180"/>
@@ -2982,6 +2982,36 @@ design rules under a new name.</description>
 <wire x1="-11.01" y1="-73.66" x2="-9.21" y2="-80.01" width="0" layer="19" extent="1-1"/>
 <wire x1="-5.12" y1="-63.5" x2="-11.01" y2="-73.66" width="0" layer="19" extent="1-1"/>
 <wire x1="-0.381" y1="-32.0802" x2="-5.12" y2="-63.5" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$18">
+<contactref element="JP9-DNP1" pad="6"/>
+<contactref element="JP9-DNP2" pad="1"/>
+<wire x1="36.195" y1="55.88" x2="83.82" y2="37.465" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$19">
+<contactref element="JP9-DNP1" pad="5"/>
+<contactref element="JP9-DNP2" pad="2"/>
+<wire x1="37.465" y1="53.34" x2="86.36" y2="38.735" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$20">
+<contactref element="JP9-DNP1" pad="4"/>
+<contactref element="JP9-DNP2" pad="3"/>
+<wire x1="38.735" y1="55.88" x2="83.82" y2="40.005" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$25">
+<contactref element="JP9-DNP1" pad="3"/>
+<contactref element="JP9-DNP2" pad="4"/>
+<wire x1="40.005" y1="53.34" x2="86.36" y2="41.275" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$26">
+<contactref element="JP9-DNP1" pad="2"/>
+<contactref element="JP9-DNP2" pad="5"/>
+<wire x1="41.275" y1="55.88" x2="83.82" y2="42.545" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$27">
+<contactref element="JP9-DNP1" pad="1"/>
+<contactref element="JP9-DNP2" pad="6"/>
+<wire x1="42.545" y1="53.34" x2="86.36" y2="43.815" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>
