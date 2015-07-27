@@ -10099,13 +10099,14 @@ Source: AVX .. aphvc.pdf</description>
 <part name="P+13" library="SparkFun" deviceset="VCC" device="" value="3.3V"/>
 <part name="LOGO1" library="SparkFun-Aesthetics" deviceset="OSHW-LOGO" device="M"/>
 <part name="JP9-DNP2" library="FSEWeatherShield" deviceset="RJ11-BUCHSE" device="" value="RJ11-BUCHSE"/>
-<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="1K"/>
+<part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="280"/>
 <part name="D12" library="SparkFun" deviceset="LED" device="0603" value="AirBoard status led"/>
 <part name="GND18" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND25" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY15" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="P+6" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="FRAME1" library="frames" deviceset="A5L-LOC" device=""/>
+<part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10140,16 +10141,17 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="NAME" x="129.794" y="66.167" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="129.54" y="43.18" size="1.778" layer="96" rot="MR0"/>
 </instance>
-<instance part="R25" gate="G$1" x="53.34" y="63.5" rot="R270"/>
-<instance part="D12" gate="G$1" x="53.34" y="53.34" smashed="yes">
-<attribute name="NAME" x="47.498" y="53.086" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="57.023" y="40.894" size="1.778" layer="96" rot="R90"/>
+<instance part="R25" gate="G$1" x="43.18" y="63.5" rot="R270"/>
+<instance part="D12" gate="G$1" x="43.18" y="53.34" smashed="yes">
+<attribute name="NAME" x="37.338" y="53.086" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="46.863" y="40.894" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND18" gate="1" x="53.34" y="43.18"/>
+<instance part="GND18" gate="1" x="43.18" y="43.18"/>
 <instance part="GND25" gate="1" x="137.16" y="40.64" rot="MR0"/>
 <instance part="SUPPLY15" gate="G$1" x="134.62" y="66.04"/>
 <instance part="P+6" gate="G$1" x="137.16" y="63.5"/>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
+<instance part="SUPPLY1" gate="G$1" x="43.18" y="71.12"/>
 </instances>
 <busses>
 </busses>
@@ -10178,7 +10180,7 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="33.02" y1="99.06" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="45.72" x2="53.34" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="45.72" x2="43.18" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="D12" gate="G$1" pin="C"/>
 <pinref part="GND18" gate="1" pin="GND"/>
 </segment>
@@ -10277,16 +10279,15 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="134.62" y1="58.42" x2="134.62" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="SUPPLY15" gate="G$1" pin="5V"/>
 </segment>
-</net>
-<net name="STAT1" class="0">
 <segment>
-<wire x1="53.34" y1="71.12" x2="53.34" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="71.12" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="R25" gate="G$1" pin="1"/>
+<pinref part="SUPPLY1" gate="G$1" pin="5V"/>
 </segment>
 </net>
 <net name="N$28" class="0">
 <segment>
-<wire x1="53.34" y1="58.42" x2="53.34" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="58.42" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R25" gate="G$1" pin="2"/>
 <pinref part="D12" gate="G$1" pin="A"/>
 </segment>
