@@ -7,6 +7,7 @@ try:
 
     deleteditems = []
     directories = ["AirBoard_Shield", "Base_Shield", "lib"]
+	
     for dir in directories:
         if os.path.isdir(dir):
             os.chdir(dir)
