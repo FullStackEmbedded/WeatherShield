@@ -22628,6 +22628,7 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="GND3" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+6" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+8" library="SparkFun" deviceset="3.3V" device=""/>
+<part name="C6" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -22797,7 +22798,7 @@ needed</text>
 <instance part="GND22" gate="1" x="292.1" y="127" rot="MR0"/>
 <instance part="GND23" gate="1" x="363.22" y="111.76" rot="MR0"/>
 <instance part="C20" gate="G$1" x="213.36" y="203.2"/>
-<instance part="C21" gate="G$1" x="208.28" y="203.2"/>
+<instance part="C21" gate="G$1" x="223.52" y="205.74"/>
 <instance part="R22" gate="1" x="40.64" y="48.26"/>
 <instance part="JP9-DNP1" gate="G$1" x="165.1" y="238.76" smashed="yes" rot="MR0">
 <attribute name="NAME" x="159.893" y="244.094" size="1.778" layer="95" rot="R270"/>
@@ -22824,7 +22825,7 @@ needed</text>
 <instance part="P+4" gate="G$1" x="152.4" y="127"/>
 <instance part="C5" gate="G$1" x="147.32" y="121.92"/>
 <instance part="GND18" gate="1" x="91.44" y="162.56" rot="MR0"/>
-<instance part="SUPPLY14" gate="G$1" x="73.66" y="203.2"/>
+<instance part="SUPPLY14" gate="G$1" x="73.66" y="210.82"/>
 <instance part="U4" gate="A" x="96.52" y="185.42"/>
 <instance part="JP6" gate="G$1" x="68.58" y="175.26" rot="R180"/>
 <instance part="JP7" gate="G$1" x="116.84" y="187.96"/>
@@ -22835,7 +22836,8 @@ needed</text>
 </instance>
 <instance part="GND3" gate="1" x="172.72" y="172.72" rot="MR0"/>
 <instance part="P+6" gate="G$1" x="172.72" y="203.2"/>
-<instance part="P+8" gate="G$1" x="22.86" y="187.96"/>
+<instance part="P+8" gate="G$1" x="22.86" y="203.2"/>
+<instance part="C6" gate="G$1" x="66.04" y="203.2"/>
 </instances>
 <busses>
 </busses>
@@ -23087,10 +23089,14 @@ needed</text>
 <pinref part="U4" gate="A" pin="GND"/>
 <pinref part="U4" gate="A" pin="ADDR"/>
 <wire x1="91.44" y1="167.64" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="190.5" x2="60.96" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="190.5" x2="66.04" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="190.5" x2="60.96" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="190.5" x2="60.96" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="167.64" x2="91.44" y2="167.64" width="0.1524" layer="91"/>
 <junction x="91.44" y="167.64"/>
+<pinref part="C6" gate="G$1" pin="2"/>
+<wire x1="66.04" y1="198.12" x2="66.04" y2="190.5" width="0.1524" layer="91"/>
+<junction x="66.04" y="190.5"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
@@ -23198,7 +23204,7 @@ needed</text>
 <pinref part="JP10-DNP" gate="G$1" pin="3"/>
 <pinref part="P+8" gate="G$1" pin="3.3V"/>
 <wire x1="15.24" y1="182.88" x2="22.86" y2="182.88" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="182.88" x2="22.86" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="182.88" x2="22.86" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -23365,9 +23371,14 @@ needed</text>
 </segment>
 <segment>
 <wire x1="76.2" y1="195.58" x2="73.66" y2="195.58" width="0.1524" layer="91" style="longdash"/>
-<wire x1="73.66" y1="195.58" x2="73.66" y2="203.2" width="0.1524" layer="91" style="longdash"/>
+<wire x1="73.66" y1="195.58" x2="73.66" y2="208.28" width="0.1524" layer="91"/>
 <pinref part="SUPPLY14" gate="G$1" pin="5V"/>
 <pinref part="U4" gate="A" pin="VDD"/>
+<pinref part="C6" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="208.28" x2="73.66" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="205.74" x2="66.04" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="208.28" x2="73.66" y2="208.28" width="0.1524" layer="91"/>
+<junction x="73.66" y="208.28"/>
 </segment>
 </net>
 <net name="RAIN" class="0">
