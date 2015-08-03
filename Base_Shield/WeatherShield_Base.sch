@@ -18919,8 +18919,8 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="P+7" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="SUPPLY12" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="P+1" library="SparkFun" deviceset="VCC" device="" value="3.3V"/>
-<part name="U$1" library="FSEWeatherShield" deviceset="XT-60" device=""/>
-<part name="U$6" library="FSEWeatherShield" deviceset="XT-60" device=""/>
+<part name="SOLAR_CELL" library="FSEWeatherShield" deviceset="XT-60" device=""/>
+<part name="BATT" library="FSEWeatherShield" deviceset="XT-60" device=""/>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="JP2" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
@@ -18968,7 +18968,7 @@ needed</text>
 <text x="259.08" y="81.28" size="1.778" layer="95" rot="R90">Add. UART</text>
 <text x="172.72" y="71.12" size="1.778" layer="95">Add. SPI</text>
 <text x="159.258" y="8.382" size="2.54" layer="98" rot="R90">Level shifter</text>
-<text x="129.794" y="135.636" size="1.27" layer="98" rot="R180">Air Board Interface</text>
+<text x="132.334" y="133.096" size="1.27" layer="98" rot="R180">Air Board Interface</text>
 <text x="68.326" y="174.244" size="1.27" layer="98">Solar cell</text>
 <text x="2.54" y="106.68" size="1.27" layer="98">Temperatur sensor</text>
 <text x="116.84" y="55.88" size="1.778" layer="97">7-Bit I2C Address is 0x68</text>
@@ -19103,7 +19103,7 @@ needed</text>
 <instance part="C18" gate="G$1" x="104.14" y="20.32"/>
 <instance part="C12" gate="G$1" x="10.16" y="33.02"/>
 <instance part="C19" gate="G$1" x="111.76" y="15.24"/>
-<instance part="SUPPLY13" gate="G$1" x="254" y="106.68"/>
+<instance part="SUPPLY13" gate="G$1" x="248.92" y="114.3"/>
 <instance part="GND22" gate="1" x="182.88" y="45.72" rot="MR0"/>
 <instance part="GND23" gate="1" x="259.08" y="66.04" rot="MR270"/>
 <instance part="R22" gate="1" x="25.4" y="152.4"/>
@@ -19114,11 +19114,11 @@ needed</text>
 <instance part="GND26" gate="1" x="137.16" y="109.22" rot="MR0"/>
 <instance part="SUPPLY16" gate="G$1" x="134.62" y="134.62"/>
 <instance part="P+5" gate="G$1" x="137.16" y="132.08"/>
-<instance part="P+7" gate="G$1" x="175.26" y="109.22"/>
+<instance part="P+7" gate="G$1" x="175.26" y="114.3"/>
 <instance part="SUPPLY12" gate="G$1" x="104.14" y="38.1"/>
 <instance part="P+1" gate="1" x="129.54" y="99.06"/>
-<instance part="U$1" gate="G$1" x="7.62" y="157.48" rot="R270"/>
-<instance part="U$6" gate="G$1" x="180.34" y="162.56" rot="R270"/>
+<instance part="SOLAR_CELL" gate="G$1" x="7.62" y="157.48" rot="R270"/>
+<instance part="BATT" gate="G$1" x="180.34" y="162.56" rot="R270"/>
 <instance part="JP1" gate="G$1" x="259.08" y="144.78"/>
 <instance part="JP2" gate="G$1" x="259.08" y="134.62"/>
 <instance part="GND6" gate="1" x="243.84" y="132.08" rot="MR0"/>
@@ -19226,7 +19226,7 @@ needed</text>
 <wire x1="25.4" y1="147.32" x2="25.4" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="142.24" x2="17.78" y2="142.24" width="0.1524" layer="91"/>
 <junction x="17.78" y="142.24"/>
-<pinref part="U$1" gate="G$1" pin="-"/>
+<pinref part="SOLAR_CELL" gate="G$1" pin="-"/>
 <wire x1="7.62" y1="147.32" x2="7.62" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="7.62" y1="142.24" x2="17.78" y2="142.24" width="0.1524" layer="91"/>
 </segment>
@@ -19248,7 +19248,7 @@ needed</text>
 <wire x1="175.26" y1="154.94" x2="162.56" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="GND13" gate="1" pin="GND"/>
 <wire x1="175.26" y1="152.4" x2="175.26" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="U$6" gate="G$1" pin="-"/>
+<pinref part="BATT" gate="G$1" pin="-"/>
 <wire x1="180.34" y1="152.4" x2="175.26" y2="152.4" width="0.1524" layer="91"/>
 <junction x="175.26" y="152.4"/>
 </segment>
@@ -19468,7 +19468,7 @@ needed</text>
 <segment>
 <pinref part="PCB1" gate="G$1" pin="3V3@1"/>
 <wire x1="190.5" y1="106.68" x2="175.26" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="106.68" x2="175.26" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="106.68" x2="175.26" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="PCB1" gate="G$1" pin="3V3@2"/>
 <wire x1="190.5" y1="86.36" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="86.36" x2="175.26" y2="106.68" width="0.1524" layer="91"/>
@@ -19629,7 +19629,7 @@ needed</text>
 <wire x1="248.92" y1="104.14" x2="248.92" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="PCB1" gate="G$1" pin="5V0@1"/>
 <wire x1="248.92" y1="106.68" x2="243.84" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="248.92" y1="106.68" x2="254" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="106.68" x2="248.92" y2="114.3" width="0.1524" layer="91"/>
 <junction x="248.92" y="106.68"/>
 <pinref part="SUPPLY13" gate="G$1" pin="5V"/>
 </segment>
@@ -19804,7 +19804,7 @@ needed</text>
 <wire x1="25.4" y1="157.48" x2="25.4" y2="167.64" width="0.1524" layer="91"/>
 <junction x="25.4" y="167.64"/>
 <pinref part="R22" gate="1" pin="E"/>
-<pinref part="U$1" gate="G$1" pin="+"/>
+<pinref part="SOLAR_CELL" gate="G$1" pin="+"/>
 <wire x1="7.62" y1="165.1" x2="7.62" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="7.62" y1="167.64" x2="17.78" y2="167.64" width="0.1524" layer="91"/>
 </segment>
@@ -19871,7 +19871,7 @@ needed</text>
 <wire x1="177.8" y1="170.18" x2="177.8" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="170.18" x2="170.18" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="167.64" x2="177.8" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="U$6" gate="G$1" pin="+"/>
+<pinref part="BATT" gate="G$1" pin="+"/>
 <wire x1="180.34" y1="170.18" x2="177.8" y2="170.18" width="0.1524" layer="91"/>
 <junction x="177.8" y="170.18"/>
 </segment>
