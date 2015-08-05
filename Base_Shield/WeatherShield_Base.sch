@@ -18882,7 +18882,7 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="JP9" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="JP10" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="JP12" library="pinhead" deviceset="PINHD-1X1" device=""/>
-<part name="U$1" library="FSEWeatherShield" deviceset="BATTERIE_HALTER_CR1225" device=""/>
+<part name="U$1" library="FSEWeatherShield" deviceset="BATTERIE_HALTER_CR1225" device="" value="CR1225"/>
 </parts>
 <sheets>
 <sheet>
@@ -19708,8 +19708,8 @@ needed</text>
 <segment>
 <pinref part="U1" gate="A" pin="VBAT"/>
 <wire x1="127" y1="88.9" x2="129.54" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="127" y1="88.9" x2="127" y2="86.36" width="0.1524" layer="91"/>
-<label x="127" y="86.36" size="1.778" layer="95" xref="yes"/>
+<wire x1="127" y1="88.9" x2="127" y2="101.6" width="0.1524" layer="91"/>
+<label x="127" y="101.6" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="U$1" gate="G$1" pin="+"/>
 <junction x="127" y="88.9"/>
 </segment>
