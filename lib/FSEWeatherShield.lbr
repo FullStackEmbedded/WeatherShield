@@ -839,7 +839,7 @@ Farnell(1141495)</description>
 <rectangle x1="1.795" y1="1.935" x2="2.595" y2="3.135" layer="51" rot="R270"/>
 <rectangle x1="-2.9" y1="-0.6" x2="-1.6" y2="0.6" layer="51" rot="R90"/>
 </package>
-<package name="HSNF_C158">
+<package name="HSMF_C158">
 <wire x1="-1.6" y1="1.35" x2="1.6" y2="1.35" width="0.127" layer="21"/>
 <wire x1="1.6" y1="1.35" x2="1.6" y2="-1.35" width="0.127" layer="21"/>
 <wire x1="1.6" y1="-1.35" x2="-1.6" y2="-1.35" width="0.127" layer="21"/>
@@ -858,6 +858,18 @@ Farnell(1141495)</description>
 <smd name="C2" x="1.75" y="-0.7" dx="1.5" dy="1" layer="1" rot="R180"/>
 <text x="-1.778" y="2.159" size="1.27" layer="21">G</text>
 <text x="-1.905" y="-3.429" size="1.27" layer="21">R</text>
+</package>
+<package name="VLMV3100">
+<smd name="C" x="-1.55" y="0" dx="2.8" dy="1.9" layer="1" rot="R90"/>
+<smd name="A_RED" x="1.55" y="0.825" dx="1.9" dy="1.15" layer="1" rot="R180"/>
+<smd name="A_GREEN" x="1.55" y="-0.825" dx="1.9" dy="1.15" layer="1" rot="R180"/>
+<wire x1="-1.5" y1="1.4" x2="-1.5" y2="-1.4" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-1.4" x2="1.5" y2="-1.4" width="0.127" layer="21"/>
+<wire x1="1.5" y1="-1.4" x2="1.5" y2="1.4" width="0.127" layer="21"/>
+<wire x1="1.5" y1="1.4" x2="-1.5" y2="1.4" width="0.127" layer="21"/>
+<wire x1="-1.4224" y1="0.6604" x2="-0.7874" y2="1.2954" width="0.127" layer="21"/>
+<wire x1="-1.4732" y1="0.9398" x2="-1.0668" y2="1.3462" width="0.127" layer="21"/>
+<text x="-2.54" y="2.54" size="1.27" layer="21">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -1125,7 +1137,7 @@ J8</text>
 <pin name="E" x="0" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
 <pin name="S" x="5.08" y="0" visible="pad" length="short" direction="pas" rot="R180"/>
 </symbol>
-<symbol name="HSMF_C158">
+<symbol name="DUAL_LED">
 <text x="-3.81" y="-3.81" size="0.8128" layer="95">Red</text>
 <text x="-3.81" y="0" size="0.8128" layer="95">Green</text>
 <text x="-2.54" y="-7.62" size="1.27" layer="95">&gt;Name</text>
@@ -1140,6 +1152,20 @@ J8</text>
 <wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
 <pin name="3" x="-2.54" y="-2.54" visible="off" length="short"/>
 <pin name="4" x="5.08" y="-2.54" visible="off" length="short" rot="R180"/>
+</symbol>
+<symbol name="VLMV3100">
+<wire x1="0" y1="5.08" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="2.54" y2="2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="0" y2="5.08" width="0.254" layer="94"/>
+<pin name="1" x="-2.54" y="0" visible="off" length="short"/>
+<pin name="2" x="5.08" y="2.54" visible="off" length="short" rot="R180"/>
+<wire x1="0" y1="0" x2="0" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="-5.08" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
+<pin name="3" x="5.08" y="-2.54" visible="off" length="short" rot="R180"/>
+<text x="4.064" y="-4.826" size="1.27" layer="94">G</text>
+<text x="4.064" y="4.064" size="1.27" layer="94">R</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1458,15 +1484,32 @@ LBR by Tim Rettmann 07-2014</description>
 </deviceset>
 <deviceset name="HSMF_C158">
 <gates>
-<gate name="G$1" symbol="HSMF_C158" x="0" y="0"/>
+<gate name="G$1" symbol="DUAL_LED" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="HSNF_C158">
+<device name="" package="HSMF_C158">
 <connects>
 <connect gate="G$1" pin="1" pad="A1"/>
 <connect gate="G$1" pin="2" pad="C1"/>
 <connect gate="G$1" pin="3" pad="A2"/>
 <connect gate="G$1" pin="4" pad="C2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VLMV3100">
+<gates>
+<gate name="G$1" symbol="VLMV3100" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="VLMV3100">
+<connects>
+<connect gate="G$1" pin="1" pad="C"/>
+<connect gate="G$1" pin="2" pad="A_RED"/>
+<connect gate="G$1" pin="3" pad="A_GREEN"/>
 </connects>
 <technologies>
 <technology name=""/>
