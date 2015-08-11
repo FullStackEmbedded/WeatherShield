@@ -16882,9 +16882,9 @@ Farnell(1141495)</description>
 <sheets>
 <sheet>
 <plain>
-<text x="7.62" y="121.92" size="1.27" layer="98">Wind Speed &amp; Direction</text>
-<text x="147.32" y="134.62" size="1.27" layer="98">Rain sensor</text>
-<text x="142.24" y="101.6" size="1.27" layer="98">RTC Clock</text>
+<text x="7.62" y="121.92" size="1.778" layer="98">Wind Speed &amp; Direction</text>
+<text x="144.78" y="134.62" size="1.778" layer="98">Rain sensor</text>
+<text x="142.24" y="101.6" size="1.778" layer="98">RTC Clock</text>
 <text x="197.612" y="147.574" size="1.778" layer="91" rot="R90">Cut the JP3 trace to
 measure output current.
 Can be used for max current
@@ -16900,13 +16900,13 @@ Connect to Ground if not
 needed</text>
 <text x="259.08" y="81.28" size="1.778" layer="95" rot="R90">Add. UART</text>
 <text x="172.72" y="71.12" size="1.778" layer="95">Add. SPI</text>
-<text x="154.178" y="8.382" size="2.54" layer="98" rot="R90">Level shifter</text>
-<text x="132.334" y="133.096" size="1.27" layer="98" rot="R180">Air Board Interface</text>
-<text x="68.326" y="174.244" size="1.27" layer="98">Solar cell</text>
+<text x="154.178" y="8.382" size="1.778" layer="98" rot="R90">Level shifter</text>
+<text x="137.414" y="133.096" size="1.778" layer="98" rot="R180">Air Board Interface</text>
+<text x="68.326" y="174.244" size="1.778" layer="98">Solar cell</text>
 <text x="20.32" y="66.04" size="1.27" layer="98">Temperatur sensor</text>
 <text x="116.84" y="55.88" size="1.778" layer="97">7-Bit I2C Address is 0x68</text>
 <text x="20.32" y="63.5" size="1.778" layer="97">7-Bit I2C Address is 0x48</text>
-<text x="68.58" y="106.68" size="1.27" layer="98">ADC 2 I2C</text>
+<text x="68.58" y="106.68" size="1.778" layer="98">ADC 2 I2C</text>
 <wire x1="0" y1="114.3" x2="114.3" y2="114.3" width="0.1524" layer="98" style="longdash"/>
 <wire x1="114.3" y1="114.3" x2="114.3" y2="139.7" width="0.1524" layer="98" style="longdash"/>
 <wire x1="114.3" y1="139.7" x2="170.18" y2="139.7" width="0.1524" layer="98" style="longdash"/>
@@ -16921,9 +16921,10 @@ needed</text>
 <wire x1="116.84" y1="48.26" x2="116.84" y2="53.34" width="0.1524" layer="98" style="longdash"/>
 <wire x1="116.84" y1="53.34" x2="170.18" y2="53.34" width="0.1524" layer="98" style="longdash"/>
 <wire x1="116.84" y1="48.26" x2="116.84" y2="0" width="0.1524" layer="98" style="longdash"/>
-<text x="71.12" y="43.18" size="1.27" layer="98">+5V Generation (Raspberry Power)</text>
+<text x="71.12" y="43.18" size="1.778" layer="98">+5V Generation (Raspberry Power)</text>
 <text x="109.22" y="124.46" size="1.778" layer="91" rot="R90">Ubat_float = 13.5V</text>
-<text x="2.54" y="111.76" size="1.27" layer="98">Wind &amp; Wind direction Sensor</text>
+<text x="2.54" y="111.76" size="1.778" layer="98">Wind &amp; Wind direction Sensor</text>
+<text x="190.5" y="124.46" size="1.778" layer="98">Raspberry Pi</text>
 </plain>
 <instances>
 <instance part="R6" gate="G$1" x="215.9" y="157.48"/>
