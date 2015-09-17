@@ -1157,13 +1157,13 @@ J8</text>
 <wire x1="0" y1="5.08" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="2.54" y2="2.54" width="0.254" layer="94"/>
 <wire x1="2.54" y1="2.54" x2="0" y2="5.08" width="0.254" layer="94"/>
-<pin name="1" x="-2.54" y="0" visible="off" length="short"/>
-<pin name="2" x="5.08" y="2.54" visible="off" length="short" rot="R180"/>
+<pin name="A1" x="-2.54" y="2.54" visible="off" length="short"/>
+<pin name="A2" x="-2.54" y="-2.54" visible="off" length="short"/>
 <wire x1="0" y1="0" x2="0" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="0" y1="-5.08" x2="2.54" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="2.54" y1="-2.54" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.254" layer="94"/>
-<pin name="3" x="5.08" y="-2.54" visible="off" length="short" rot="R180"/>
+<pin name="C" x="5.08" y="0" visible="off" length="short" rot="R180"/>
 <text x="4.064" y="-4.826" size="1.27" layer="94">G</text>
 <text x="4.064" y="4.064" size="1.27" layer="94">R</text>
 </symbol>
@@ -1507,9 +1507,9 @@ LBR by Tim Rettmann 07-2014</description>
 <devices>
 <device name="" package="VLMV3100">
 <connects>
-<connect gate="G$1" pin="1" pad="C"/>
-<connect gate="G$1" pin="2" pad="A_RED"/>
-<connect gate="G$1" pin="3" pad="A_GREEN"/>
+<connect gate="G$1" pin="A1" pad="A_RED"/>
+<connect gate="G$1" pin="A2" pad="A_GREEN"/>
+<connect gate="G$1" pin="C" pad="C"/>
 </connects>
 <technologies>
 <technology name=""/>
