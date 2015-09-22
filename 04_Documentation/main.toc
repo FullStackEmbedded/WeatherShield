@@ -1,0 +1,14 @@
+\select@language {american}
+\vspace {-\cftbeforepartskip }
+\select@language {american}
+\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Chapter Title}}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Section Title}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Subsection Title}{1}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Subsection Title}{1}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}Section Title}{1}{section.1.2}
+\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Chapter Title}}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Section Title}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Subsection Title}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Subsection Title}{3}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Section Title}{3}{section.2.2}
+\contentsline {part}{i\hspace {1em}\spacedlowsmallcaps {Appendix}}{5}{part.1}

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Cleanup eagle auto generated files
 import os, glob
 
@@ -6,7 +7,7 @@ try:
     os.chdir(os.path.dirname(currentdir))
 
     deleteditems = []
-    directories = ["AirBoard_Shield", "Base_Shield", "lib"]
+    directories = ["01_EagleDocuments//AirBoard_Shield", "01_EagleDocuments//Base_Shield", "01_EagleDocuments//lib"]
 	
     for dir in directories:
         if os.path.isdir(dir):
