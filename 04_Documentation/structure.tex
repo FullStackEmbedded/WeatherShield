@@ -71,3 +71,18 @@ pdfproducer={LaTeX with hyperref and ClassicThesis} % PDF producer
 %	HYPHENATION
 %---------------------------------------------------------------------------------------
 \hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+
+
+%----------------------------------------------------------------------------------------
+%	Definition of \maketitle
+%---------------------------------------------------------------------------------------
+\makeatletter         
+\def\@maketitle{ 
+\begin{center} 
+	{\Huge \bfseries \sffamily \@title }\\[1ex] 
+	{\Large  \@author}\\[4ex] 
+	\@date\\[8ex]
+\includegraphics[width = 60mm]{WS}
+\end{center}}
+\makeatother
