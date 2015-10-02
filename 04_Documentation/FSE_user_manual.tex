@@ -62,7 +62,7 @@ BCOR5mm, % Binding correction
 %----------------------------------------------------------------------------------------
 
 \section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
-\lipsum[1] % Dummy text
+
 
 \newpage % Start the article content on the second page, remove this if you have a longer abstract that goes onto the second page
 
@@ -70,23 +70,51 @@ BCOR5mm, % Binding correction
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-\lipsum[2] % Dummy text
-\lipsum[3] % Dummy text
+
 %----------------------------------------------------------------------------------------
-%	
+%	Setting up your Raspberry Pi
 %----------------------------------------------------------------------------------------
-\section{Full stack embedded (FSE)}
-\subsection{Paragraphs1}
-\lipsum[3] % Dummy text
+\section{Setting up your Raspberry Pi}
+\subsection{Prerequisites}
+Required are:
+\begin{itemize}
+	\item \textbf{SD Card}\\
+		Recommended is an 8GB preinstalled with NOOBS.
+	\item \textbf{Display and connectivity cables} \\
+	Any HDMI/DVI monitor or TV should work as a display for the Pi . For best results, use one with HDMI input, but other connections are available for older devices. Use a standard Ethernet cable for internet access.
+	\item \textbf{Keyboard and mouse} \\
+	Any standard USB keyboard and mouse will work with your Raspberry Pi.
+	\item \textbf{Power supply} \\
+	Use a 5V micro USB power supply to power your Raspberry Pi. Be careful that whatever power supply you use outputs at least 5V; insufficient power will cause your Pi to behave in strange ways.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	Plugging in your Raspberry Pi
+%----------------------------------------------------------------------------------------
+\subsection{Plugging in your Raspberry Pi}
+Before you plug anything into your Raspberry Pi, make sure that you have all the equipment listed above to hand. Then follow these instructions: \\
+\begin{enumerate}
+	\item Begin by slotting your SD card into the SD card slot on the Raspberry Pi, which will only fit one way.
+	\item Next, plug in your USB keyboard and Mouse into the USB slots on the Raspberry Pi.
+	\item Make sure that your monitor or TV is turned on, and that you have selected the right input (e.g. HDMI 1, DVI, etc)\\
+	\item Then connect your HDMI cable from your Raspberry Pi to your monitor or TV.
+	\item If you intend to connect your Raspberry Pi to the internet, plug in an ethernet cable into the ethernet port next to the USB ports, otherwise skip this step.
+	\item When you are happy that you have plugged in all the cables and SD card required, finally plug in the micro usb power supply. This action will turn on and boot your Raspberry Pi.
+	\item Once your Raspberry Pi has completed the boot process, a login prompt will appear. The default login for Raspbian is username pi with the password raspberry.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	Configuring the Raspberry Pi
+%----------------------------------------------------------------------------------------
+\subsection{Configuring the Raspberry Pi}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
+%\renewcommand{\refname}{\spacedlowsmallcaps{References}} % For modifying the bibliography heading
 
-\renewcommand{\refname}{\spacedlowsmallcaps{References}} % For modifying the bibliography heading
-
-\bibliographystyle{unsrt}
-\bibliography{sample.bib} % The file containing the bibliography
+%\bibliographystyle{unsrt}
+%\bibliography{sample.bib} % The file containing the bibliography
 
 %----------------------------------------------------------------------------------------
 
