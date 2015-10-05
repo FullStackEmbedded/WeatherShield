@@ -19,6 +19,8 @@ pdfspacing, % Makes use of pdftex’ letter spacing capabilities via the microty
 dottedtoc % Dotted lines leading to the page numbers in the table of contents
 ]{classicthesis} % The layout is based on the Classic Thesis style
 
+\usepackage[margin=1in]{geometry}
+
 \usepackage{arsclassica} % Modifies the Classic Thesis package
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
@@ -96,4 +98,21 @@ pdfproducer={LaTeX with hyperref and ClassicThesis} % PDF producer
 \chapterfont{\color{red}}  % sets colour of chapters
 \sectionfont{\color{red}}  % sets colour of sections
 \subsectionfont{\color{blue}}  % sets colour of sections
+
+%----------------------------------------------------------------------------------------
+%	Definition of listing
+%---------------------------------------------------------------------------------------
+\usepackage{listings}
+\lstdefinestyle{BashInputStyle}{
+  language=bash,
+  basicstyle=\small\sffamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=3pt,
+  frame=tb,
+  columns=fullflexible,
+  backgroundcolor=\color{yellow!20},
+  linewidth=0.9\linewidth,
+  xleftmargin=0.1\linewidth
+}
 
