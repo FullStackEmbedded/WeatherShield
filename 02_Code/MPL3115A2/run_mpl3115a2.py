@@ -11,9 +11,10 @@
 ##==============================================================================##
 import mpl3115a2_class
 import time
+
 # Create an instance
-mpl3115a2.SHT21()
+mpl3115a2 = mpl3115a2_class.MPL3115A2()
 
 while 1:
-	print(sht21_class.getTemperature())
+	#mpl3115a2.getAirPressure()
 	time.sleep(1)
