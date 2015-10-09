@@ -18,6 +18,16 @@ import time
 ##GLOBAL DEFINITION
 DEBUG = 1
 
+class SensorError(Exception):
+
+   """Problem occured while communicating with sensor."""
+
+
+class i2cError(SensorError):
+
+   """Raised when the i2c error occurs"""
+
+
 class SHT21:
     """Class to read temperature and humidity from SHT21"""
 
@@ -30,21 +40,17 @@ class SHT21:
 
 	# Wait a bit more than recommended
     _TEMPERATURE_WAIT_TIME          = 0.086  # (datasheet: typ=66, max=85)
-    _HUMIDITY_WAIT_TIME             = 0.030  # (datasheet: typ=22, max=29)	
+    _HUMIDITY_WAIT_TIME             = 0.030  # (datasheet: typ=22, max=29)
 
 
     def __init__(self, device_number = 1):
         """Opens the i2c device (assuming that the kernel modules have been
         loaded) & run soft reset. (user register leaved to default value)"""
-        try:
-			self.bus = SMBus(device_number)
-			self.bus.write_byte(self._SLAVE_ADDRESS, self._SOFTRESET)
-			time.sleep(0.015)
-			if DEBUG:
-				print("SHT21 init done.")
-        except i2cError:
-			print("I2C error occurs. Cannot open devive")
-			exit(1)
+        self.bus = SMBus(device_number)
+        self.bus.write_byte(self._SLAVE_ADDRESS, self._SOFTRESET)
+        time.sleep(0.015)
+        if DEBUG:
+            print("SHT21 init done.")
 
     def getTemperature(self):
         """Reads the temperature from the sensor.  Not that this call blocks
@@ -63,6 +69,8 @@ class SHT21:
 
         if self._calculate_checksum(data, 2) == (data[2]):
             return Temperature
+        else:
+            raise SensorError("Checksum error when reading temperature.")
 
     def getHumidity(self):
         """Reads the humidity from the sensor.  Not that this call blocks
@@ -78,8 +86,9 @@ class SHT21:
         if DEBUG:
             print("Humidity[%] = ", Humidity)
         if self._calculate_checksum(data, 2) == (data[2]):
-            return Humidity
 
+        else:
+            raise SensorError("Checksum error when reading humidity.")
 
 
 
@@ -125,13 +134,49 @@ class SHT21:
                     crc = (crc << 1)
         return crc
 
+class SensorInterface(object):
 
+    """Abstract common interface for hardware sensors."""
 
-class Error(Exception):
-   """Base class for other exceptions"""
-   pass
-class i2cError(Error):
-   """Raised when the i2c error occurs"""
-   pass
+    def __init__(self):
+        self.error_count = 0
+
+    def get_value(self):
+        try:
+            ret = self._get_value()
+        except SensorError as e:
+            # TODO: Let errors expire after given time
+            if self.error_count < 3:
+                pass
+            else:
+                raise e
+        return ret
+
+    def _get_value():
+        raise NotImplementedError
+
+class SHT21_Sensor(SensorInterface):
+
+    """Sensor using SHT21 hardware."""
+
+    def __init__(self):
+        self._hw_sensor = SHT21()
+
+class TemperatureSensor(SHT21_Sensor):
+
+    """Implements common interface for temp sensor"""
+
+    def _get_value(self):
+        """Read sensor value."""
+        return self._hw_sensor.getTemperature()
+
+class HumiditySensor(SHT21_Sensor):
+
+    """Implements common interface for humidity sensor"""
+
+    def _get_value(self):
+        """Read sensor value."""
+        return self._hw_sensor.getHumidity()
+
 
 
