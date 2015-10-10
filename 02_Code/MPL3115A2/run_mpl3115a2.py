@@ -16,5 +16,5 @@ import time
 mpl3115a2 = mpl3115a2_class.MPL3115A2()
 
 while 1:
-	#mpl3115a2.getAirPressure()
+	mpl3115a2.getAirPressure()
 	time.sleep(1)

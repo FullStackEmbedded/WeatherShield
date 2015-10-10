@@ -16,7 +16,13 @@ from smbus import SMBus
 import time
 
 #GLOBAL DEFINITION
-DEBUG = 0
+DEBUG = 1
+
+class SensorError(Exception):
+    """Problem occured while communicating with sensor."""
+
+class i2cError(SensorError):
+    """Raised when the i2c error occurs"""
 
 class MPL3115A2:
     """ Class to read Air pressure """
@@ -30,26 +36,23 @@ class MPL3115A2:
     _device_initialized = 0
     def __init__(self,device_number= 1):
         """Opens the i2c device (assuming that the kernel modules have been loaded)"""
+        self.bus = SMBus(device_number)
+        time.sleep(0.005)
         try:
-		self.bus = SMBus(device_number)
-		time.sleep(0.005)
-		whoami = self.bus.read_byte_data(self._SLAVE_ADDR,self._WHOAMI_REG)
-		if whoami == 0xC4:
-			self._device_initialized = 1
-			self.initBarometer()
+            whoami = self.bus.read_byte_data(self._SLAVE_ADDR,self._WHOAMI_REG)
+        except:
+            raise i2cError("i2c error occurs...")
+
+        if whoami == 0xC4:
+            self._device_initialized = 1
+            self.initBarometer(self)
             #self.setActive()
             if DEBUG:
-				print("Successfull Device initialisation")
+                print("Successfull Device initialisation")
+        else:
+            raise SensorError("Cannot configure the MPL3115A2")
 
-		else:
-			print("...")
-			raise(i2cError)
-        except i2cError:
-			print("I2C error occurs. Cannot open devive")
-			exit(1)
-
-
-	def setActive(self):
+	def set_Active(self):
 		""" Set the device active """
 		ctrl_reg1  = self.bus.read_byte_data(self._SLAVE_ADDR,self._CTRL_REG1)
 		ctrl_reg1 = ctrl_reg1 | 0x01
@@ -63,22 +66,20 @@ class MPL3115A2:
 
     def getAirPressure(self):
         """ Reads the air pressure in  Pa """
+
     @staticmethod
     def initBarometer(self):
         """ Initialise the Barometer """
         self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x38)
+        time.sleep(0.01)
         self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x00)
+        time.sleep(0.01)
         self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x11)
+        time.sleep(0.01)
         self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x00)
+        time.sleep(0.01)
         self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x00)
-        self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x07)
+        time.sleep(0.01)
+        #self.bus.write_byte_data(self._SLAVE_ADDR,self._CTRL_REG1,0x07)
 
-
-class Error(Exception):
-   """Base class for other exceptions"""
-   pass
-class i2cError(Error):
-   """Raised when the i2c error occurs"""
-   pass
-
-
+MPL3115A2()

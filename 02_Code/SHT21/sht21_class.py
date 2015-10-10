@@ -86,7 +86,7 @@ class SHT21:
         if DEBUG:
             print("Humidity[%] = ", Humidity)
         if self._calculate_checksum(data, 2) == (data[2]):
-
+            return Humidity
         else:
             raise SensorError("Checksum error when reading humidity.")
 
@@ -143,14 +143,13 @@ class SensorInterface(object):
 
     def get_value(self):
         try:
-            ret = self._get_value()
+            return self._get_value()
         except SensorError as e:
             # TODO: Let errors expire after given time
             if self.error_count < 3:
                 pass
             else:
                 raise e
-        return ret
 
     def _get_value():
         raise NotImplementedError
@@ -160,6 +159,7 @@ class SHT21_Sensor(SensorInterface):
     """Sensor using SHT21 hardware."""
 
     def __init__(self):
+        super(SHT21_Sensor, self).__init__()
         self._hw_sensor = SHT21()
 
 class TemperatureSensor(SHT21_Sensor):

@@ -24,11 +24,11 @@ if __name__ == "__main__":
     2. Logic for failed sensor readings
     """
     start = time.time()
-    sensor_list = [(TemperatureSensor(), 60, "/dev/temp-sensor"),
-                   (HumiditySensor(), 60, "/dev/hum-sensor")]
+    sensor_list = [(TemperatureSensor(), 1, "/dev/temp-sensor"),
+                   (HumiditySensor(), 1, "/dev/hum-sensor")]
     while True:
         runtime = int(time.time() - start)
         for sensor, interval, logfile in sensor_list:
             if not runtime % interval:
                 val = sensor.get_value()
-        time.sleep(0.2)
+        time.sleep(0.8)
