@@ -3,7 +3,7 @@
 ##==============================================================================##
 ## FULL STACK EMBEDDED 2016                                                     ##
 ##==============================================================================##
-## File  :       sht21.py                                                       ##
+## File  :       sht21_class.py                                                 ##
 ## Author:       FA                                                             ##
 ## Board :       Raspberry Pi                                                   ##
 ## Brief :       Sensor layer. Functions for sensor access                      ##
@@ -19,15 +19,9 @@ import time
 DEBUG = 1
 
 class SensorError(Exception):
-
    """Problem occured while communicating with sensor."""
-
-
 class i2cError(SensorError):
-
    """Raised when the i2c error occurs"""
-
-
 class SHT21:
     """Class to read temperature and humidity from SHT21"""
 
@@ -65,9 +59,11 @@ class SHT21:
 
         Temperature = self._get_temperature_from_buffer(data)
         if DEBUG:
-            print("Temp[C] = ", Temperature,)
+            print("Temp[C] = ", Temperature)
 
         if self._calculate_checksum(data, 2) == (data[2]):
+            #if DEBUG:
+               # print("Temp[C] = ", Temperature)
             return Temperature
         else:
             raise SensorError("Checksum error when reading temperature.")
@@ -81,16 +77,15 @@ class SHT21:
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
-
         Humidity = self._get_humidity_from_buffer(data)
         if DEBUG:
             print("Humidity[%] = ", Humidity)
         if self._calculate_checksum(data, 2) == (data[2]):
+            #if DEBUG:
+               # print("Humidity[%] = ", Humidity)
             return Humidity
         else:
             raise SensorError("Checksum error when reading humidity.")
-
-
 
     @staticmethod
     def _get_temperature_from_buffer(data):
@@ -135,9 +130,7 @@ class SHT21:
         return crc
 
 class SensorInterface(object):
-
     """Abstract common interface for hardware sensors."""
-
     def __init__(self):
         self.error_count = 0
 
@@ -164,7 +157,7 @@ class SHT21_Sensor(SensorInterface):
 
 class TemperatureSensor(SHT21_Sensor):
 
-    """Implements common interface for temp sensor"""
+    """Implements common interface for temperatur sensor"""
 
     def _get_value(self):
         """Read sensor value."""
@@ -180,3 +173,8 @@ class HumiditySensor(SHT21_Sensor):
 
 
 
+if __name__ == "__main__":
+    sht = SHT21()
+    while 1:
+        print(sht.getTemperature())
+        time.sleep(1)

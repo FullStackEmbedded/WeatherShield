@@ -6,6 +6,9 @@ PushToGit.sh
 01_EagleDocuments/Base_Shield/WeatherShield_Base.s#*
 01_EagleDocuments/lib/FSEWeatherShield.l#*
 
+02_Code/MPL3115A2/mpl3115a2_class.pyc
+02_Code/MPL3115A2/sht21_class.pyc
+02_Code/MPL3115A2/tmp100_class.pyc
 
 04_Documentation/main.aux
 04_Documentation/main.lof

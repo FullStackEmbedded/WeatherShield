@@ -6,13 +6,15 @@
 ## File  :       run_sht21.py                                                   ##
 ## Author:       FA                                                             ##
 ## Board :       Raspberry Pi                                                   ##
-## Brief :       sht21 main()                      ##
+## Brief :       Scheduler                                                      ##
 ## Note  :                                                                      ##
 ##==============================================================================##
 
 from sht21_class import TemperatureSensor, HumiditySensor
+from mpl3115a2_class import AirPressureSensor
 import time
 
+count = 0
 if __name__ == "__main__":
     """
     Prototype sensor polling scheduler.
@@ -24,11 +26,15 @@ if __name__ == "__main__":
     2. Logic for failed sensor readings
     """
     start = time.time()
-    sensor_list = [(TemperatureSensor(), 1, "/dev/temp-sensor"),
-                   (HumiditySensor(), 1, "/dev/hum-sensor")]
+    sensor_list = [(TemperatureSensor(), 1, "/dev/temperature-sensor"),
+                   (HumiditySensor()   , 1, "/dev/humidity-sensor"),
+                   (AirPressureSensor(), 1, "/dev/Pressure-sensor")]
     while True:
         runtime = int(time.time() - start)
         for sensor, interval, logfile in sensor_list:
             if not runtime % interval:
                 val = sensor.get_value()
+                if not count % 3:
+                    print('------------------------------------------------')
+                count = count+1
         time.sleep(0.8)
