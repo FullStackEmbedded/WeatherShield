@@ -27,28 +27,27 @@ class TMP100:
     """Class to read temperature and humidity from SHT21"""
 
 	## Control constants
-    _SLAVE_ADDRESS = 0x00
-    _config = 
+    _SLAVE_ADDRESS = 0x48
+    _TEMP_REGISTER = 0x00
+    _CONFIGURATION_REGISTER = 0x1
 
 	# Wait a bit more than recommended
     def __init__(self, device_number = 1):
         """Opens the i2c device (assuming that the kernel modules have been
-        loaded) & run soft reset. (user register leaved to default value)"""
+        loaded)"""
         self.bus = SMBus(device_number)
-        self.bus.write_byte(self._SLAVE_ADDRESS, self._SOFTRESET)
+        # write configuration register (set 12bits, single shot measurement)
+        self.bus.write_byte_data(self._SLAVE_ADDRESS,
+                self._CONFIGURATION_REGISTER,0x1E0)
+
         time.sleep(0.015)
         if DEBUG:
-            print("SHT21 init done.")
+            print("TMP100 init done.")
 
     def getTemperature(self):
         """Reads the temperature from the sensor."""
-
-
-    @staticmethod
-    def _get_temperature_from_buffer(data):
-        """ """
-
-
+        return self.bus.read_word_data(self._SLAVE_ADDRESS,
+                self._TEMP_REGISTER)
 
 class SensorInterface(object):
     """Abstract common interface for hardware sensors."""
@@ -95,7 +94,7 @@ class HumiditySensor(SHT21_Sensor):
 
 
 if __name__ == "__main__":
-    sht = SHT21()
+    sht = TMP100()
     while 1:
         print(sht.getTemperature())
         time.sleep(1)
