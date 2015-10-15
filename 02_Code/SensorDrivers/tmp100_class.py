@@ -36,9 +36,11 @@ class TMP100:
         """Opens the i2c device (assuming that the kernel modules have been
         loaded)"""
         self.bus = SMBus(device_number)
-        # write configuration register (set 12bits, single shot measurement)
-        self.bus.write_byte_data(self._SLAVE_ADDRESS,
-                self._CONFIGURATION_REGISTER,0x1E0)
+        # set pointerregister -> configuration register
+        #self.bus.write_byte_data(self._SLAVE_ADDRESS,self._CONFIGURATION_REGISTER,0x60)
+        #self.bus.write_byte(self._SLAVE_ADDRESS,self._CONFIGURATION_REGISTER)
+        #self.bus.write_byte(self._SLAVE_ADDRESS,0xE1)
+        self.bus.write_byte(self._SLAVE_ADDRESS,self._TEMP_REGISTER)
 
         time.sleep(0.015)
         if DEBUG:
@@ -46,8 +48,10 @@ class TMP100:
 
     def getTemperature(self):
         """Reads the temperature from the sensor."""
-        return self.bus.read_word_data(self._SLAVE_ADDRESS,
-                self._TEMP_REGISTER)
+        tmp_msb = self.bus.read_byte(self._SLAVE_ADDRESS)
+        tmp_lsb = self.bus.read_byte(self._SLAVE_ADDRESS)
+        #return hex(self.bus.read_byte(self._SLAVE_ADDRESS))
+        return   tmp_msb + (tmp_lsb >>4)
 
 class SensorInterface(object):
     """Abstract common interface for hardware sensors."""
@@ -67,34 +71,24 @@ class SensorInterface(object):
     def _get_value():
         raise NotImplementedError
 
-class SHT21_Sensor(SensorInterface):
-
+class TMP100_Sensor(SensorInterface):
     """Sensor using SHT21 hardware."""
 
     def __init__(self):
-        super(SHT21_Sensor, self).__init__()
-        self._hw_sensor = SHT21()
+        super(TMP100_Sensor, self).__init__()
+        self._hw_sensor = TMP100()
 
-class TemperatureSensor(SHT21_Sensor):
-
+class TemperatureSensor(TMP100_Sensor):
     """Implements common interface for temperatur sensor"""
 
     def _get_value(self):
         """Read sensor value."""
         return self._hw_sensor.getTemperature()
 
-class HumiditySensor(SHT21_Sensor):
-
-    """Implements common interface for humidity sensor"""
-
-    def _get_value(self):
-        """Read sensor value."""
-        return self._hw_sensor.getHumidity()
-
 
 
 if __name__ == "__main__":
-    sht = TMP100()
+    tmp100 = TMP100()
     while 1:
-        print(sht.getTemperature())
+        print(tmp100.getTemperature())
         time.sleep(1)

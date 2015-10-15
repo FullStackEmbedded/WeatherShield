@@ -136,10 +136,10 @@ class AirPressureSensor(SensorInterface):
 
 
 
-#if __name__ == "__main__":
-#    mpl = MPL3115A2()
-#    while 1:
-#        Temperature = mpl.getTemperature()
-#        Pressure = mpl.getAirPressure()
-#        print('Temperature:', Temperature, 'Pressure:', Pressure)
-#       time.sleep(1)
+if __name__ == "__main__":
+    mpl = MPL3115A2()
+    while 1:
+        Temperature = mpl.getTemperature()
+        Pressure = mpl.getAirPressure()
+        print('Temperature:', Temperature, 'Pressure:', Pressure)
+        time.sleep(1)
