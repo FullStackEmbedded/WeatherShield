@@ -1,14 +1,13 @@
 #!/usr/bin/python
-
 ##==============================================================================##
 ## FULL STACK EMBEDDED 2016                                                     ##
 ##==============================================================================##
-## File  :       sht21_class.py                                                 ##
+## File  :       sht21.py                                                       ##
 ## Author:       FA                                                             ##
 ## Board :       Raspberry Pi                                                   ##
 ## Brief :       Sensor layer. Functions for sensor access                      ##
 ## Note  :                                                                      ##
-##==============================================================================##
+#===============================================================================##
 
 ## IMPORTS
 from __future__ import print_function
@@ -16,12 +15,13 @@ from smbus import SMBus
 import time
 
 ##GLOBAL DEFINITION
-DEBUG = 1
+DEBUG = 0
 
 class SensorError(Exception):
    """Problem occured while communicating with sensor."""
 class i2cError(SensorError):
    """Raised when the i2c error occurs"""
+
 class SHT21:
     """Class to read temperature and humidity from SHT21"""
 
@@ -55,18 +55,11 @@ class SHT21:
 
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
-        data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
 
         Temperature = self._get_temperature_from_buffer(data)
         if DEBUG:
             print("Temp[C] = ", Temperature)
-
-        if self._calculate_checksum(data, 2) == (data[2]):
-            #if DEBUG:
-               # print("Temp[C] = ", Temperature)
-            return Temperature
-        else:
-            raise SensorError("Checksum error when reading temperature.")
+        return Temperature
 
     def getHumidity(self):
         """Reads the humidity from the sensor.  Not that this call blocks
@@ -74,18 +67,15 @@ class SHT21:
         self.bus.write_byte(self._SLAVE_ADDRESS, self._TRIGGER_HUMIDITY_NO_HOLD)
         data = []
         time.sleep(self._HUMIDITY_WAIT_TIME)
+
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
         data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
-        data.append(self.bus.read_byte(self._SLAVE_ADDRESS))
+
         Humidity = self._get_humidity_from_buffer(data)
         if DEBUG:
             print("Humidity[%] = ", Humidity)
-        if self._calculate_checksum(data, 2) == (data[2]):
-            #if DEBUG:
-               # print("Humidity[%] = ", Humidity)
-            return Humidity
-        else:
-            raise SensorError("Checksum error when reading humidity.")
+
+        return Humidity
 
     @staticmethod
     def _get_temperature_from_buffer(data):
@@ -129,8 +119,10 @@ class SHT21:
                     crc = (crc << 1)
         return crc
 
+
 class SensorInterface(object):
     """Abstract common interface for hardware sensors."""
+
     def __init__(self):
         self.error_count = 0
 
@@ -147,8 +139,8 @@ class SensorInterface(object):
     def _get_value():
         raise NotImplementedError
 
-class SHT21_Sensor(SensorInterface):
 
+class SHT21_Sensor(SensorInterface):
     """Sensor using SHT21 hardware."""
 
     def __init__(self):
@@ -156,7 +148,6 @@ class SHT21_Sensor(SensorInterface):
         self._hw_sensor = SHT21()
 
 class TemperatureSensor(SHT21_Sensor):
-
     """Implements common interface for temperatur sensor"""
 
     def _get_value(self):
@@ -164,7 +155,6 @@ class TemperatureSensor(SHT21_Sensor):
         return self._hw_sensor.getTemperature()
 
 class HumiditySensor(SHT21_Sensor):
-
     """Implements common interface for humidity sensor"""
 
     def _get_value(self):
@@ -174,7 +164,10 @@ class HumiditySensor(SHT21_Sensor):
 
 
 if __name__ == "__main__":
-    sht = SHT21()
+    tmpSens = TemperatureSensor()
+    humiditySens = HumiditySensor()
     while 1:
-        print(sht.getTemperature())
+        print("Temperature[C] = ",tmpSens.get_value(),"   ","AirHumidity[%] =",
+                humiditySens.get_value())
+        print("_________________________________________________________________")
         time.sleep(1)

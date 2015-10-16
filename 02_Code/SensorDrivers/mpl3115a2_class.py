@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 ##==============================================================================##
 ## FULL STACK EMBEDDED 2016                                                     ##
 ##==============================================================================##
@@ -16,7 +15,7 @@ from smbus import SMBus
 import time
 
 #GLOBAL DEFINITION
-DEBUG = 1
+DEBUG = 0
 
 class SensorError(Exception):
     """Problem occured while communicating with sensor."""
@@ -122,7 +121,6 @@ class SensorInterface(object):
             else:
                 raise e
 
-
     def _get_value():
         raise NotImplementedError
 
@@ -134,12 +132,11 @@ class AirPressureSensor(SensorInterface):
         """ Reads sensor value """
         return  self._hw_sensor.getAirPressure()
 
-
-
 if __name__ == "__main__":
     mpl = MPL3115A2()
     while 1:
         Temperature = mpl.getTemperature()
         Pressure = mpl.getAirPressure()
-        print('Temperature:', Temperature, 'Pressure:', Pressure)
+        print('Temperature[C]=', Temperature, 'Pressure[Pa]=', Pressure)
+        print("__________________________________________________")
         time.sleep(1)
