@@ -15,9 +15,14 @@ from threading import Thread
 import time
 from sht21_class import TemperatureSensor, HumiditySensor
 from mpl3115a2_class import AirPressureSensor
+from ds3231_class import RTC
 
 ## GLOBALS
 DEBUG = 1
+Realtime = RTC()
+print("Start time: ", Realtime.get_value())
+
+
 
 class Task(Thread):
     def __init__(self,sensorObject,period,outputFile,variable=""):
@@ -35,7 +40,7 @@ class Task(Thread):
         while True:
             val = self._sensor.get_value()
             if DEBUG:
-                print(self._variableName, " = ", val)
+                print(Realtime.get_value(), "==> ",self._variableName, " = ", val)
             time.sleep(self._sleepTime)
 
     def writeLog(self):
@@ -46,11 +51,11 @@ class Task(Thread):
             print(self._logFile,"written")
 
 
-Task1 = Task(TemperatureSensor(), 1,"/dev/temperature-sensor","Temperatur[C]")
+Task1 = Task(TemperatureSensor(), 3,"/dev/temperature-sensor","Temperatur[C]")
 time.sleep(1)
-Task2 = Task(HumiditySensor() , 1,"/dev/humidity-sensor","Humidity[%]")
+Task2 = Task(HumiditySensor() , 5,"/dev/humidity-sensor","Humidity[%]")
 time.sleep(1)
-Task3 = Task(AirPressureSensor(), 1, "/dev/AirPressure-sensor","Pressure[Pa]")
+Task3 = Task(AirPressureSensor(), 4, "/dev/AirPressure-sensor","Pressure[Pa]")
 
 
 while True:
