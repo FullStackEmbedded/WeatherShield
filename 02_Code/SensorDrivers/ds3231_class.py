@@ -194,10 +194,10 @@ class RTC(SensorInterface):
 
 if __name__ == "__main__":
     rtc = RTC()
-    #sens.setTimeNow()
+    #rtc.setTimeNow()
     while True:
 
-        #rtc.get_value()
+        print(rtc.get_value())
         time.sleep(2)
 
 
