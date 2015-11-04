@@ -41,7 +41,7 @@ class RAINGAUGE:
             # declare _rGChannel as input 6 activate Pull-Down
             GPIO.setup(self._rGChannel, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
             # Add interrupt event "_rGChannel", count on rising edge and add callback function "_rainGaugeCallback()"
-            GPIO.add_event_detect(self._rGChannel, GPIO.RISING, callback = self.rainGaugeCallback, bouncetime = 10)
+            GPIO.add_event_detect(self._rGChannel, GPIO.RISING, callback = self.rainGaugeCallback(), bouncetime = 10)
         except Exception as e:
             print(e)
             raise SensorError('Rain gauge initialisation failed...')
