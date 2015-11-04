@@ -46,11 +46,11 @@ class RAINGAUGE:
             print(e)
             raise SensorError('Rain gauge initialisation failed...')
 
-	def rainGaugeCallback(self):
+    def rainGaugeCallback(self):
 		""" """
 		self._rGCount += 1
 
-	def readrG(self):
+    def readrG(self):
 		""" """
 		return self._rGValToBebeReturned
 
