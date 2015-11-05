@@ -38,9 +38,7 @@ if __name__ == "__main__":
         userLed(1).run()
         while True:
             time.sleep(2)
-    except (KeyboardInterrupt, SystemExit):
-	    raise
-	except:
-	    GPIO.cleanup()
-		sys.exit
-	    
+    except:
+        GPIO.cleanup()
+        sys.exit
+

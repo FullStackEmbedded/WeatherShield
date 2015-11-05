@@ -18,11 +18,11 @@ import time, sys
 
 
 ##GLOBAL DEFINITION
-DEBUG = 1
+DEBUG = 0
 
 class SensorError(Exception):
    """Problem occured while communicating with sensor."""
-   
+
 class i2cError(SensorError):
    """Raised when the i2c error occurs"""
 
@@ -31,33 +31,34 @@ class RAINGAUGE:
 
     python_version = sys.version_info.major
 
-    def __init__(self,channel):
+    def __init__(self, channel):
         """  """
-        self._rGChannel = channel
+        self._rGChannel =  channel
         self._rGCount   = 0
         try:
             GPIO.setmode(GPIO.BCM)
             # Set as input and activate pull-down
             GPIO.setup(self._rGChannel, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
             # Add interrupt event "_rGChannel", count on rising edge and add callback function "_rainGaugeCallback()"
-            GPIO.add_event_detect(self._rGChannel, GPIO.RISING, callback = self.rainGaugeCallback, bouncetime = 10)
+            GPIO.add_event_detect(self._rGChannel, GPIO.RISING, callback =
+                    self.rGCallback , bouncetime = 10)
             if DEBUG:
-                print("Rain gauge successfully initiallised")
+                print("Rain gauge successfully initialised")
         except Exception as e:
             print(e)
             raise SensorError('Rain gauge initialisation failed...')
 
-    def rainGaugeCallback(self):
+    def rGCallback(self, channel):
         """ """
         self._rGCount += 1
         if DEBUG:
             print("Rain gauge returns ", self._rGCount, "counts")
 
-    def readrG(self):
+    def rGread(self):
         """ Return Rain gauge value in [mm]"""
         return self._rGCount * 0.279
 
-    def resetRG(self):
+    def rGreset(self):
         """ resets RG counts"""
         self._rGCount = 0
         if DEBUG:
@@ -81,22 +82,23 @@ class SensorInterface(object):
 
 class RainGaugeSensor(SensorInterface):
     """ Implements common interface for rain gauge"""
-    def __init__(self):
-        self._hw_sensor = RAINGAUGE()
+    def __init__(self, channel):
+        self._hw_sensor = RAINGAUGE(channel)
     def _get_value(self):
         """ Reads sensor value """
-        return  self._hw_sensor.readrG()
+        return  self._hw_sensor.rGread()
 
 
 
 if __name__ == "__main__":
     try:
-        rG = RAINGAUGE(18)
+        rG = RainGaugeSensor(18)
         while True:
-            time.sleep(5)
-            print(rG.readrG)
+            time.sleep(2)
+            print(rG.get_value())
     except (KeyboardInterrupt, SystemExit):
         raise
-    except:
+    except Exception as e:
+        print(e)
         GPIO.cleanup()
         sys.exit
