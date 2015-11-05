@@ -30,6 +30,17 @@ class userLed:
         GPIO.cleanup(21)
         print ("Cleaning up ...")
 
-if __name__ == "__main__":
-    userLed(1).run()
+#if __name__ == "__main__":
+#    userLed(1).run()
 
+if __name__ == "__main__":
+    try:
+        userLed(1).run()
+        while True:
+            time.sleep(2)
+    except (KeyboardInterrupt, SystemExit):
+	    raise
+	except:
+	    GPIO.cleanup()
+		sys.exit
+	    
