@@ -16,12 +16,14 @@ from smbus import SMBus
 import time
 
 ##GLOBAL DEFINITION
-DEBUG = 0
+DEBUG = 1
 
 class SensorError(Exception):
      """Problem occured while communicating with sensor.""" 
 class i2cError(SensorError):
     """Raised when the i2c error occurs"""
+class ConfigError(SensorError):
+    """ Cannot configure ADS1015"""
 
 
 class ADS1015:
@@ -29,71 +31,89 @@ class ADS1015:
     #control constants
     _SLAVE_ADDR = 0x48
     # pointer register
-    _POINTER_CONFIG_REG = 0x01
-    _POINTER_CONVERT_REG = 0x00
+    _POINTER_REG_CONVERSION = 0x00
+    _POINTER_REG_CONFIG     = 0x01
 
-    # config register
-    _CONFIG_MUX_SINGLE_0  = 0x4000    # single ended AIN 0
-    _CONFIG_MUX_SINGLE_1  = 0x5000    # single ended AIN 1
-    _CONFIG_MUX_SINGLE_2  = 0x6000    # single ended AIN 2
-    _CONFIG_MUX_SINGLE_3  = 0x7000    # single ended AIN 3
+    # configuration register
+    _CONFIG_REG_MUX_CH0 = 0x04
+    _CONFIG_REG_MUX_CH1 = 0x05
+    _CONFIG_REG_MUX_CH2 = 0x06
+    _CONFIG_REG_MUX_CH3 = 0x07
+    _CONFIG_REG_PGA_6114 = 0x00
+    _CONFIG_REG_MODE_CONT = 0x00
+    _CONFIG_REG_MODE_SING = 0x01
+    _CONFIG_REG_DR_250SPS = 0x01
+    _CONFIG_REG_COMP_OFF = 0x3
 
-    _CONFIG_PGA_6114    = 0x00
-    _CONFIG_MODE_CONT   = 0x00
-    _CONFIG_MODE_SINGLE = 0x100
-
-    _CONFIG_OS_SINGLE   = 0x8000
-    _CONFIG_OS_BUSY     = 0x00
-    _CONFIG_NOT_BUSY    = 0x8000
-
-    _CONFIG_DATA_RATE   = 0x80      #1600 Samples/s
-    _CONFIG_COMP_MODE   = 0x00
-    _CONFIG_POL         = 0x00
-    _CONFIG_LAT         = 0x00
-    _CONFIG_QUE         = 0x3
-
-
-    def __init__(self, device_number = 1):
-        """ Open the i2c device and configure the sensor """
-        self.bus = SMBus(device_number)
-        time.sleep(0.005)
-        #write config register
+    def __init__(self,device_number,channel):
+        """ """
         try:
-            config = self._CONFIG_MUX_SINGLE_1 | self._CONFIG_PGA_6114 | self._CONFIG_MODE_CONT | self._CONFIG_DATA_RATE | self._CONFIG_COMP_MODE | self._CONFIG_POL | self._CONFIG_LAT | self._CONFIG_QUE
-            self.bus.write_word_data(self._SLAVE_ADDR,self._POINTER_CONFIG_REG, config )
+            self.bus = SMBus(device_number)
+        except Exception:
+            raise i2cError()
+
+        try:
+            if channel ==3:
+                self.CH = self._CONFIG_REG_MUX_CH3
+            elif channel == 2:
+                self.CH = self._CONFIG_REG_MUX_CH2
+            elif channel == 1:
+                self.CH = self._CONFIG_REG_MUX_CH1
+            else:
+                self.CH = self._CONFIG_REG_MUX_CH0
+
+            # MUX PGA MODE DR COMP_QUE
+            confList =  [ self.CH,      \
+                          self._CONFIG_REG_PGA_6114,     \
+                          self._CONFIG_REG_MODE_CONT,    \
+                          self._CONFIG_REG_DR_250SPS,    \
+                          self._CONFIG_REG_COMP_OFF ]
+            self.configADS1015(confList)
+            # set conversion factor
+            if confList[1] == self._CONFIG_REG_PGA_6114:
+                self.convFactor = 6.114*2/4096
+            #TODO: add  other conversion factor
+
         except Exception as e:
             print(e)
-            raise i2cError("I2C error occurs while configuring ADS1015")
+            raise ConfigError()
 
-        #point to conversion register
-        #self.bus.write_byte(self._SLAVE_ADDR, self._POINTER_CONVERT_REG)
+    def configADS1015(self, list):
+        """ configure the chip according to list"""
+        MSB = (list[0]<<4)+ (list[1]<<1) + list[2]
+        LSB = (list[3]<<5) + list[4]
+        # write list to config register
+        self.bus.write_i2c_block_data(self._SLAVE_ADDR, self._POINTER_REG_CONFIG, [MSB, LSB])
+        if DEBUG:
+            #read register back
+            Data = self.bus.read_i2c_block_data(self._SLAVE_ADDR,self._POINTER_REG_CONFIG)[:2]
+            #print ( "To be written: ",MSB, LSB)
+            #print (" Read back :  ",Data[0], Data[1])
 
 
-    def read(self, channel=0, pga = 6144, sps = 1600):
-        """ Gets a single-ended ADC reading from the specified channel in mV. """
-        config = self._CONFIG_MUX_SINGLE_1 | self._CONFIG_PGA_6114 | self._CONFIG_MODE_CONT | self._CONFIG_DATA_RATE | self._CONFIG_COMP_MODE | self._CONFIG_POL | self._CONFIG_LAT | self._CONFIG_QUE
-
-        # Set the channel to be converted
-        if channel == 3:
-            config |= self._CONFIG_MUX_SINGLE_3
-        elif channel == 2:
-            config |= self._CONFIG_MUX_SINGLE_2
-        elif channel == 1:
-            config |= self._CONFIG_MUX_SINGLE_1
-        else:
-            config |= self._CONFIG_MUX_SINGLE_0
-        # Begin Conversation
-        config |= self._CONFIG_OS_SINGLE
-
-        self.bus.write_word_data(self._SLAVE_ADDR,self._POINTER_CONFIG_REG,config)
-        time.sleep(0.005)
-        #Read conversation result
-        val =self.bus.read_word_data(self._SLAVE_ADDR,self._POINTER_CONVERT_REG)
-        return ( val  >> 4 )* pga / 2048.0
+    def readAnalogChannel(self):
+        """ reads single ended analog channel"""
+        #read config register and overwrite MUX
+        configTmp = self.bus.read_i2c_block_data(self._SLAVE_ADDR,self._POINTER_REG_CONFIG)[:2]
+        bitmask  = 0x8F
+        tmp = (configTmp[0] & bitmask)|(self.CH << 4)
+        self.bus.write_i2c_block_data(self._SLAVE_ADDR,self._POINTER_REG_CONFIG,[tmp,configTmp[1]])
+        # get conversion value
+        tmp = self.bus.read_i2c_block_data(self._SLAVE_ADDR,self._POINTER_REG_CONVERSION)[:2]
+        val = ((tmp[0] << 8) + tmp[1]) >> 4
+        val = val & 0x7FF
+        #if DEBUG:
+            #print( val*self.convFactor)
+        return val * self.convFactor
 
 if __name__ == "__main__":
-    ads1015 = ADS1015()
+    #WIND = ADS1015(1,0)
+    #RTC  = ADS1015(1,1)
+    CH3 = ADS1015(1,2)
+
     while True:
-        print(ads1015.read(2, 6144, 1600))
-        time.sleep(1)
+        #print("WIND:  ",WIND.readAnalogChannel(), "On channel ",WIND.CH)
+        #print("RTC:  ",RTC.readAnalogChannel(), "On channel ",RTC.CH)
+        print("CH2:  ",CH3.readAnalogChannel())
+        time.sleep(0.1)
 
