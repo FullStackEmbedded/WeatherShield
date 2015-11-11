@@ -29,7 +29,7 @@ class ConfigError(SensorError):
 class ADS1015:
     """ Class ro read analog values"""
     #control constants
-    _SLAVE_ADDR = 0x48
+    _SLAVE_ADDR = 0x49
     # pointer register
     _POINTER_REG_CONVERSION = 0x00
     _POINTER_REG_CONFIG     = 0x01
@@ -117,14 +117,14 @@ if __name__ == "__main__":
     count = 0
     values = []
     while True:
-        #values.append(CH3.readAnalogChannel())
-        #if count== 9:
-        #    count=0
-        #    average = reduce(lambda x, y: x + y, values) / len(values)
-        #    print("Voltage = ",average)
-        #    values = []
-        #count+=1
+        values.append(CH3.readAnalogChannel())
+        if count== 19:
+            count=0
+            average = reduce(lambda x, y: x + y, values) / len(values)
+            print("Voltage = ",average)
+            values = []
+        count+=1
 
-        print("CH2:  ",CH3.readAnalogChannel())
-        time.sleep(0.2)
+        #print("CH2:  ",CH3.readAnalogChannel())
+        time.sleep(0.01)
 

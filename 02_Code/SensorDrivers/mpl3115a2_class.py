@@ -132,6 +132,8 @@ class AirPressureSensor(SensorInterface):
         """ Reads sensor value """
         return  self._hw_sensor.getAirPressure()
 
+
+#TODO: implement the real sensor class
 if __name__ == "__main__":
     mpl = MPL3115A2()
     while 1:
