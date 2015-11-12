@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.3.0">
+<eagle version="7.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -18240,10 +18240,9 @@ Source: www.kingbright.com</description>
 <part name="JP10-DNP" library="FSEWeatherShield" deviceset="RJ11-BUCHSE" device="" value="RJ11-WIND"/>
 <part name="JP9-DNP" library="FSEWeatherShield" deviceset="RJ11-BUCHSE" device="" value="RJ11-RAIN"/>
 <part name="GND15" library="SparkFun" deviceset="GND" device=""/>
-<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="20k"/>
 <part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="3k9"/>
 <part name="GND21" library="SparkFun" deviceset="GND" device=""/>
-<part name="SUPPLY7" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="U1" library="FSE_Weather_Shield" deviceset="DS3231SN" device=""/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND4" library="SparkFun" deviceset="GND" device=""/>
@@ -18341,6 +18340,7 @@ Source: www.kingbright.com</description>
 <part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="LED_RED" library="led" deviceset="LED" device="SML0603"/>
 <part name="LED_GREEN" library="led" deviceset="LED" device="SML0603"/>
+<part name="P+7" library="SparkFun" deviceset="3.3V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18430,7 +18430,6 @@ needed</text>
 <attribute name="VALUE" x="24.765" y="82.55" size="1.778" layer="96" rot="MR90"/>
 </instance>
 <instance part="GND21" gate="1" x="22.86" y="73.66" rot="MR0"/>
-<instance part="SUPPLY7" gate="G$1" x="27.94" y="106.68"/>
 <instance part="U1" gate="A" x="142.24" y="76.2"/>
 <instance part="GND1" gate="1" x="129.54" y="60.96" rot="MR0"/>
 <instance part="GND4" gate="1" x="162.56" y="63.5" rot="MR0"/>
@@ -18511,7 +18510,7 @@ needed</text>
 <instance part="JP4" gate="G$1" x="261.62" y="96.52"/>
 <instance part="JP5" gate="A" x="175.26" y="81.28" rot="R180"/>
 <instance part="U3" gate="A" x="27.94" y="55.88"/>
-<instance part="GND12" gate="1" x="7.62" y="48.26" rot="MR0"/>
+<instance part="GND12" gate="1" x="5.08" y="48.26" rot="MR0"/>
 <instance part="P+4" gate="G$1" x="7.62" y="66.04"/>
 <instance part="C5" gate="G$1" x="2.54" y="60.96"/>
 <instance part="GND18" gate="1" x="76.2" y="63.5" rot="MR0"/>
@@ -18545,6 +18544,7 @@ needed</text>
 <instance part="SUPPLY5" gate="G$1" x="203.2" y="170.18"/>
 <instance part="LED_RED" gate="G$1" x="205.74" y="162.56" rot="R90"/>
 <instance part="LED_GREEN" gate="G$1" x="205.74" y="157.48" rot="R90"/>
+<instance part="P+7" gate="G$1" x="27.94" y="106.68"/>
 </instances>
 <busses>
 </busses>
@@ -18774,19 +18774,18 @@ needed</text>
 </segment>
 <segment>
 <pinref part="U3" gate="A" pin="GND"/>
-<wire x1="10.16" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="58.42" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="58.42" x2="5.08" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="58.42" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="GND12" gate="1" pin="GND"/>
-<pinref part="U3" gate="A" pin="AD0"/>
-<wire x1="10.16" y1="55.88" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U3" gate="A" pin="AD1"/>
-<wire x1="35.56" y1="55.88" x2="35.56" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
-<junction x="7.62" y="50.8"/>
-<junction x="7.62" y="50.8"/>
+<wire x1="40.64" y1="50.8" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
+<junction x="5.08" y="50.8"/>
+<junction x="5.08" y="50.8"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="2.54" y1="55.88" x2="2.54" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="50.8" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U3" gate="A" pin="AD1"/>
+<wire x1="35.56" y1="55.88" x2="40.64" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="50.8" x2="40.64" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND18" gate="1" pin="GND"/>
@@ -18911,6 +18910,10 @@ needed</text>
 <wire x1="175.26" y1="86.36" x2="175.26" y2="106.68" width="0.1524" layer="91"/>
 <junction x="175.26" y="106.68"/>
 <pinref part="P+13" gate="G$1" pin="3.3V"/>
+</segment>
+<segment>
+<pinref part="R17" gate="G$1" pin="1"/>
+<pinref part="P+7" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -19038,10 +19041,6 @@ needed</text>
 <wire x1="142.24" y1="40.64" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="SUPPLY2" gate="G$1" pin="5V"/>
-</segment>
-<segment>
-<pinref part="R17" gate="G$1" pin="1"/>
-<pinref part="SUPPLY7" gate="G$1" pin="5V"/>
 </segment>
 <segment>
 <pinref part="PCB1" gate="G$1" pin="5V0@2"/>
@@ -19518,6 +19517,12 @@ needed</text>
 <segment>
 <pinref part="R6" gate="G$1" pin="1"/>
 <pinref part="LED_GREEN" gate="G$1" pin="C"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="AD0"/>
+<wire x1="10.16" y1="55.88" x2="7.62" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
