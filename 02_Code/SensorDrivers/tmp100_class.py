@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 ##==============================================================================##
 ## FULL STACK EMBEDDED 2016                                                     ##
 ##==============================================================================##
@@ -28,7 +28,7 @@ class ConfigError(SensorError):
 class TMP100:
     """ Class to read the onboard temperatur Sensor"""
 
-    _SLAVE_ADDR = 0x48
+    _SLAVE_ADDR = 0x49
     _CONFIG_REG = 0x01
     _TEMP_REG = 0x00
     # config register
@@ -68,7 +68,7 @@ class TMP100:
         raw = self.bus.read_i2c_block_data(self._SLAVE_ADDR,self._TEMP_REG)[:2]
         val = ((raw[0] << 8) + raw[1]) >> 4
 
-        #TODO: get properly resolution factor :)
+        #TODO: get resolution factor properly :)
         return val*0.0625
 
 class SensorInterface(object):
@@ -96,10 +96,8 @@ class OnBoardTemperaturSensor(SensorInterface):
         return  self._hw_sensor.getTemperature()
 
 
-
-
 if __name__ == "__main__":
-    OnBoardTmp =OnBoardTemperaturSensor() 
+    OnBoardTmp =OnBoardTemperaturSensor()
     while True:
         time.sleep(1)
         print(OnBoardTmp.get_value())

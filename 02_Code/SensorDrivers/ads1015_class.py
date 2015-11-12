@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 ##==============================================================================##
 ## FULL STACK EMBEDDED 2016                                                     ##
 ##==============================================================================##
@@ -29,7 +29,7 @@ class ConfigError(SensorError):
 class ADS1015:
     """ Class ro read analog values"""
     #control constants
-    _SLAVE_ADDR = 0x49
+    _SLAVE_ADDR = 0x48
     # pointer register
     _POINTER_REG_CONVERSION = 0x00
     _POINTER_REG_CONFIG     = 0x01
