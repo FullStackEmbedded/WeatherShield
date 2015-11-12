@@ -18510,7 +18510,7 @@ needed</text>
 <instance part="JP4" gate="G$1" x="261.62" y="96.52"/>
 <instance part="JP5" gate="A" x="175.26" y="81.28" rot="R180"/>
 <instance part="U3" gate="A" x="27.94" y="55.88"/>
-<instance part="GND12" gate="1" x="7.62" y="48.26" rot="MR0"/>
+<instance part="GND12" gate="1" x="5.08" y="48.26" rot="MR0"/>
 <instance part="P+4" gate="G$1" x="7.62" y="66.04"/>
 <instance part="C5" gate="G$1" x="2.54" y="60.96"/>
 <instance part="GND18" gate="1" x="76.2" y="63.5" rot="MR0"/>
@@ -18774,19 +18774,18 @@ needed</text>
 </segment>
 <segment>
 <pinref part="U3" gate="A" pin="GND"/>
-<wire x1="10.16" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="58.42" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="58.42" x2="5.08" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="58.42" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="GND12" gate="1" pin="GND"/>
-<pinref part="U3" gate="A" pin="AD0"/>
-<wire x1="10.16" y1="55.88" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U3" gate="A" pin="AD1"/>
-<wire x1="35.56" y1="55.88" x2="35.56" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
-<junction x="7.62" y="50.8"/>
-<junction x="7.62" y="50.8"/>
+<wire x1="40.64" y1="50.8" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
+<junction x="5.08" y="50.8"/>
+<junction x="5.08" y="50.8"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="2.54" y1="55.88" x2="2.54" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="50.8" x2="5.08" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U3" gate="A" pin="AD1"/>
+<wire x1="35.56" y1="55.88" x2="40.64" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="50.8" x2="40.64" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND18" gate="1" pin="GND"/>
@@ -19518,6 +19517,12 @@ needed</text>
 <segment>
 <pinref part="R6" gate="G$1" pin="1"/>
 <pinref part="LED_GREEN" gate="G$1" pin="C"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="AD0"/>
+<wire x1="10.16" y1="55.88" x2="7.62" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

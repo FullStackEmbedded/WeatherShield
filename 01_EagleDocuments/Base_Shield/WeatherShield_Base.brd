@@ -2611,8 +2611,6 @@ Your Eurocircuits Team
 <contactref element="JP2" pad="2"/>
 <contactref element="JP1" pad="2"/>
 <contactref element="U3" pad="2"/>
-<contactref element="U3" pad="5"/>
-<contactref element="U3" pad="3"/>
 <polygon width="0.254" layer="1">
 <vertex x="30.734" y="25.273"/>
 <vertex x="51.308" y="25.273"/>
@@ -2659,6 +2657,7 @@ Your Eurocircuits Team
 <wire x1="23.9166" y1="14.1834" x2="23.9166" y2="13.9954" width="0.4064" layer="1"/>
 <via x="46.7106" y="34.4424" extent="1-16" drill="0.5" diameter="0.254"/>
 <via x="40.1066" y="12.3444" extent="1-16" drill="0.5" diameter="0.254"/>
+<contactref element="U3" pad="3"/>
 </signal>
 <signal name="FAULT_PIN">
 <contactref element="PCB1" pad="7"/>
@@ -3443,6 +3442,9 @@ Your Eurocircuits Team
 <wire x1="61.976" y1="45.212" x2="61.468" y2="45.72" width="0.4064" layer="1"/>
 <wire x1="61.468" y1="45.72" x2="61.468" y2="46.775" width="0.4064" layer="1"/>
 <wire x1="61.468" y1="46.775" x2="61.556" y2="46.863" width="0.4064" layer="1"/>
+</signal>
+<signal name="N$5">
+<contactref element="U3" pad="5"/>
 </signal>
 </signals>
 <errors>
